@@ -195,15 +195,8 @@ export const homepage = (config: AdventConfig, options?: GenerateOptions) => lay
 </body>
 `);
 
-// display: flex;
-// justify-content: center;
-// gap: 1%;
-// flex-wrap: wrap;
-
 const codeBlock = (filepath: string): string => {
-  //console.log("filepath", filepath);
   const rp = path.resolve(EXE_ROOT, filepath);
-  //console.log(rp);
   const data = readFile(rp);
   return `
     <pre>
@@ -233,13 +226,10 @@ const dayCodeSection = (title: string, code: string) => {
 };
 const daySection = (config: AdventDayWithKey) => {
   const paths = getPathsFromConfig(config);
-  //console.log("daysection", paths);
   const dd = Object.entries(paths);
-  //console.log(dd);
   const data = new Map(dd.filter(([_, val]) => val !== undefined)
                         .map(pth => [pth[0],handleDayProjectFiles(pth[1] || "")]));
 
-  //console.log(data);
   const empty = !Array.from(data.values()).some(i => i!==undefined);
   return `
   ${!!empty ? '<div> No solution yet </div>' : ""}
@@ -258,15 +248,12 @@ const daySection = (config: AdventDayWithKey) => {
 
 export const dayPage = (config: AdventDayWithKey ) => {
   let count = 0;
-  console.log(config);
   if(config.partOneDone) count += 1;
   if(config.partTwoDone) count += 1;
-  console.log(count);
 
   let star = "is-transparent";
   if(count == 1) star = "is-half";
   if(count == 2) star = "";
-  console.log(star);
 
   return layout(`
 <body>
@@ -289,15 +276,12 @@ export const dayPage = (config: AdventDayWithKey ) => {
 const createProgressSection = (config: AdventConfig, options?: GenerateOptions): string => {
   return Object.entries(config.days).map( ([key, day]) => {
     let count = 0;
-    console.log(day);
     if(day.partOneDone) count += 1;
     if(day.partTwoDone) count += 1;
-    console.log(count);
 
     let star = "is-transparent";
     if(count == 1) star = "is-half";
     if(count == 2) star = "";
-    console.log(star);
 
     return `
       <a href="${options?.basename || ""}/day${key}${options?.pageSuffix || ""}">
