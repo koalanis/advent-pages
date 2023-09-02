@@ -1,6 +1,7 @@
 {
-  "name": "advent-pages",
+  "name": "@koalanis/advent-pages",
   "version": "1.0.0",
+  "registry": "https://npm.pkg.github.com",
   "description": "",
   "scripts": {
     "dev": "ts-node src/index.ts",
@@ -20,6 +21,9 @@
   "repository": {
     "url": "github:koalanis/advent-pages",
     "type": "git"
+  },
+  "publishConfig": {
+
   },
   "dependencies": {}
 }
