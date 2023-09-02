@@ -17,5 +17,9 @@
     "rimraf": "^5.0.1",
     "typescript": "^5.2.2"
   },
+  "repository": {
+    "url": "github:koalanis/advent-pages",
+    "type": "git"
+  },
   "dependencies": {}
 }
