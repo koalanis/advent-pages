@@ -1,58 +1,22 @@
 {
-  "version": "0.1.0",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "engines": {
-    "node": ">=10"
-  },
+  "name": "advent-pages",
+  "version": "1.0.0",
+  "description": "",
   "scripts": {
-    "start": "tsdx watch",
-    "build": "tsdx build",
-    "test": "tsdx test",
-    "lint": "tsdx lint",
-    "prepare": "tsdx build",
-    "size": "size-limit",
-    "analyze": "size-limit --why"
+    "dev": "ts-node src/index.ts",
+    "build": "npx tsup src/index.ts"
   },
   "bin": {
-    "advent-pages": "./dist/index.js"
+    "generate": "./dist/index.js"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
-  },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
-  "name": "advent-pages",
+  "keywords": [],
   "author": "Kaleb Osiel Alanis",
-  "module": "dist/advent-pages.esm.js",
-  "size-limit": [
-    {
-      "path": "dist/advent-pages.cjs.production.min.js",
-      "limit": "10 KB"
-    },
-    {
-      "path": "dist/advent-pages.esm.js",
-      "limit": "10 KB"
-    }
-  ],
+  "license": "ISC",
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^8.2.6",
-    "husky": "^8.0.3",
+    "ts-node": "^10.9.1",
     "rimraf": "^5.0.1",
-    "size-limit": "^8.2.6",
-    "tsdx": "^0.14.1",
-    "tslib": "^2.6.2",
-    "typescript": "^3.9.10"
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
   }
 }
