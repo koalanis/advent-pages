@@ -57,7 +57,10 @@ const tree = asciiTree.split('\n')
 const createStyle = (): string => `
 <style>
     html {
-      cursor-pointer: default;
+      cursor: default;
+    }
+    a {
+      cursor: pointer;
     }
     pre,code {
       font-family: 'Roboto Mono', monospace;
@@ -83,6 +86,12 @@ const createStyle = (): string => `
     .brown {
       color: #8b4513;
     }
+    .progress-section {
+      display: flex;
+      justify-content: center;
+      gap: 1%;
+      flex-wrap: wrap;
+    }
     .container-center {
       margin: auto;
       margin-bottom: 1.5rem;
@@ -99,8 +108,23 @@ const createStyle = (): string => `
     .off-green {
       color: #92cc41;
     }
-    .nes-container {
+    .aoc-banner {
+      text-align: center;
+    }
+    .nes-container.is-dark{
       background-color:  #1a1b26;
+    }
+    .nes-container.is-dark::after{
+      background-color:  #1a1b26;
+    }
+    .art{
+      text-align: center;
+    }
+    .nes-container.is-dark.with-title > .title   {
+      background-color:  #1a1b26;
+    }
+    .hljs {
+      background-color:  #1a1b26 !important;
     }
 </style>
 `;
@@ -151,9 +175,9 @@ type GenerateOptions = {
 
 export const homepage = (config: AdventConfig, options?: GenerateOptions) => layout(`
 <body>
-  <div class="nes-container is-dark is-centered with-title">
+  <div class="">
 
-    <p class="title">Advent of Code</p>
+    <h1 class="aoc-banner">Advent of Code</h1>
     <div class="art">
         ${tree}
     </div>
@@ -162,7 +186,7 @@ export const homepage = (config: AdventConfig, options?: GenerateOptions) => lay
 
     <div class="nes-container with-title is-dark">
         <p class="title">progress</p>
-        <div>
+        <div class="progress-section">
           ${createProgressSection(config, options)}
         </div>
     </div>
@@ -171,11 +195,15 @@ export const homepage = (config: AdventConfig, options?: GenerateOptions) => lay
 </body>
 `);
 
+// display: flex;
+// justify-content: center;
+// gap: 1%;
+// flex-wrap: wrap;
 
 const codeBlock = (filepath: string): string => {
-  console.log("filepath", filepath);
+  //console.log("filepath", filepath);
   const rp = path.resolve(EXE_ROOT, filepath);
-  console.log(rp);
+  //console.log(rp);
   const data = readFile(rp);
   return `
     <pre>
@@ -205,13 +233,13 @@ const dayCodeSection = (title: string, code: string) => {
 };
 const daySection = (config: AdventDayWithKey) => {
   const paths = getPathsFromConfig(config);
-  console.log("daysection", paths);
+  //console.log("daysection", paths);
   const dd = Object.entries(paths);
-  console.log(dd);
+  //console.log(dd);
   const data = new Map(dd.filter(([_, val]) => val !== undefined)
                         .map(pth => [pth[0],handleDayProjectFiles(pth[1] || "")]));
 
-  console.log(data);
+  //console.log(data);
   const empty = !Array.from(data.values()).some(i => i!==undefined);
   return `
   ${!!empty ? '<div> No solution yet </div>' : ""}
@@ -228,34 +256,52 @@ const daySection = (config: AdventDayWithKey) => {
 };
 
 
-export const dayPage = (config: AdventDayWithKey ) => layout(`
+export const dayPage = (config: AdventDayWithKey ) => {
+  let count = 0;
+  console.log(config);
+  if(config.partOneDone) count += 1;
+  if(config.partTwoDone) count += 1;
+  console.log(count);
+
+  let star = "is-transparent";
+  if(count == 1) star = "is-half";
+  if(count == 2) star = "";
+  console.log(star);
+
+  return layout(`
 <body>
-  <div class="nes-container is-dark is-centered with-title">
+  <a href="./index.html">back home</a>
+  <div class="aoc-banner ">
     <p class="title">Day - ${config.key}</p>
 
-    <div style="padding-block-end: 2rem"><i class="nes-icon star"></i></div>
+    <div style="padding-block-end: 2rem">
+      <i class="nes-icon star ${star}"></i>
+    </div>
     ${daySection(config)}
   </div>
 </body>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/ashes.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlightjs-themes@1.0.0/tomorrow-night-blue.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
-`);
+`)};
 
 
 const createProgressSection = (config: AdventConfig, options?: GenerateOptions): string => {
   return Object.entries(config.days).map( ([key, day]) => {
     let count = 0;
+    console.log(day);
     if(day.partOneDone) count += 1;
     if(day.partTwoDone) count += 1;
+    console.log(count);
 
     let star = "is-transparent";
     if(count == 1) star = "is-half";
     if(count == 2) star = "";
+    console.log(star);
 
     return `
       <a href="${options?.basename || ""}/day${key}${options?.pageSuffix || ""}">
-        <i class="nes-icon is-small star ${star}"></i>
+        <i class="nes-icon is-small star ${star} hi"></i>
       </a>
 `;
   }).join("");
