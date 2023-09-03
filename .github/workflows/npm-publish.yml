@@ -23,12 +23,10 @@ jobs:
       - name: Build package
         run: npm run build
       
-      - name: Check secret
-        run: echo "test ${{secrets.PUBLISH_TOKEN}}"
       
       - name: Prepare Publish
         run:  |
-          echo -e "registry=https://npk.pkg.github.com/koalanis\n//npm.pkg.github.com/:_authToken=\${{ secrets.PUBLISH_TOKEN }}" > ~/.npmrc
+          echo -e "registry=koalanis:https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=\${{ secrets.PUBLISH_TOKEN }}" > ~/.npmrc
           cat ~/.npmrc
 
       - name: Publish to GitHub Packages
