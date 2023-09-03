@@ -26,7 +26,7 @@ jobs:
       - name: Publish to GitHub Packages
         run: |
           echo "//npm.pkg.github.com/:_authTOken=\${{secrets.GITHUB_TOKEN}}" > ~/.npmrc
-          npm publish --access public --registry=https://npm.pkg.github.om/koalanis/advent-pages
+          npm publish --access public --registry=https://npm.pkg.github.com/koalanis/advent-pages
     
     env:
       NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
