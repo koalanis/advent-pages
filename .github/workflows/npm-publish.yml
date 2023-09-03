@@ -25,9 +25,8 @@ jobs:
       
       - name: Publish to GitHub Packages
         run: |
-          echo "registry=https://npm.pkg.github.com/koalanis\n" > ~/.npmrc
-          echo "//npm.pkg.github.com/:_authToken=\fakekey" >> ~/.npmrc
-          cat .npmrc
+          echo "//npm.pkg.github.com/:_authToken=\${{ secrets.PUBLISH_TOKEN }}" > ~/.npmrc
+          cat ~/.npmrc
           npm publish --access public --registry=https://npm.pkg.github.com
     
     env:
