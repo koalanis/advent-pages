@@ -23,10 +23,13 @@ jobs:
       - name: Build package
         run: npm run build
       
-      - name: Publish to GitHub Packages
-        run: |
+      - name: Prepare Publish
+        run:  |
           echo "//npm.pkg.github.com/:_authToken=\${{ secrets.PUBLISH_TOKEN }}" > ~/.npmrc
           cat ~/.npmrc
+
+      - name: Publish to GitHub Packages
+        run: |
           npm publish --access public --registry=https://npm.pkg.github.com
     
     env:
