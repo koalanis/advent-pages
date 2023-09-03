@@ -26,7 +26,7 @@ jobs:
       
       - name: Prepare Publish
         run:  |
-          echo -e "@koalanis:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=\${{ secrets.PUBLISH_TOKEN }}" > ~/.npmrc
+          echo -e "@koalanis:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=${{ secrets.PUBLISH_TOKEN }}" > ~/.npmrc
           cat ~/.npmrc
 
       - name: Publish to GitHub Packages
