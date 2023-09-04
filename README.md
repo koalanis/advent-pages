@@ -12,7 +12,7 @@ npm install --save @koalanis/advent-pages
 npx @koalanis/advent-pages generate
 ```
 
-## Configuration
+### Configuration
 The static site's metadata is configured in a `advent.config.json` file.
 ```json
 {
@@ -39,6 +39,11 @@ The fields `days[n].partOneDone` and `days[n].partOneTwo` are booleans that sign
 
 The other fields in `days[n]`, such as `testDataOne`, `codeOne`, etc, are relative paths that are used to inject source text blobs into the static site for display. You can use this to display your advent data & answers, and most importantly, your code solutions. 
 
+### Github workflow
+You can configure this static site generator to work in combination of a github action to add publishing of the static onto your advent of code github repositories. For a template of doing this, take a look at my [starter](https://github.com/koalanis/advent-template).
+#### Example
+Python Advent of Code 2015 [link](https://koalanis.github.io/advent-python-2015/)
+
 ## details
 - built using [tsup](https://tsup.egoist.dev/)
 - default styling using [NES.css](https://nostalgic-css.github.io/NES.css/)
@@ -46,7 +51,7 @@ The other fields in `days[n]`, such as `testDataOne`, `codeOne`, etc, are relati
 ## roadmap
 - [x] publish npm package
 - [ ] add custom theming support
-- [ ] 
+
 
 ## lastly
 the static site is styled in [NES.css](https://github.com/nostalgic-css/NES.css)https://github.com/nostalgic-css/NES.css 
