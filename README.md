@@ -35,12 +35,12 @@ The static site's metadata is configured in a `advent.config.json` file.
   }
 }
 ```
-The fields `days[n].partOneDone` and `days[n].partOneTwo` are booleans that signify if a problem has been compelted, which in turn effects how the completion stars are rendered on the static site. 
+The fields `days[n].partOneDone` and `days[n].partTwoDone` are booleans that signify if a problem has been compelted, which in turn effects how the completion stars are rendered on the static site. 
 
 The other fields in `days[n]`, such as `testDataOne`, `codeOne`, etc, are relative paths that are used to inject source text blobs into the static site for display. You can use this to display your advent data & answers, and most importantly, your code solutions. 
 
 ### Github workflow
-You can configure this static site generator to work in combination of a github action to add publishing of the static onto your advent of code github repositories. For a template of doing this, take a look at my [starter](https://github.com/koalanis/advent-template).
+You can configure this static site generator to work in combination of a github pages. You can add an action to publish the static onto your advent of code github repos. For a template of doing this, take a look at my [starter](https://github.com/koalanis/advent-template).
 #### Example
 Python Advent of Code 2015 [link](https://koalanis.github.io/advent-python-2015/)
 
