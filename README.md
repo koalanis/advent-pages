@@ -1,6 +1,6 @@
-# advent-pages
-## 🎅 an advent-of-code project site generator🎄
+#🎅 advent-pages 🎄
 <img width="834" alt="image" src="https://github.com/koalanis/advent-pages/assets/5452212/57f9aa2b-a1e7-417b-a69a-4b070d2742a4">
+### an advent-of-code project site generator
 
 
 ## how to use
