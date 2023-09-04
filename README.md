@@ -1,6 +1,7 @@
 # advent-pages
-🎅 an advent-of-code project site generator🎄
-![image](https://github.com/koalanis/advent-pages/assets/5452212/ad93262e-5a17-4689-a5f6-0ffba0f2bb32)
+## 🎅 an advent-of-code project site generator🎄
+<img width="834" alt="image" src="https://github.com/koalanis/advent-pages/assets/5452212/57f9aa2b-a1e7-417b-a69a-4b070d2742a4">
+
 
 ## how to use
 todo
