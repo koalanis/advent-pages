@@ -284,7 +284,7 @@ const createProgressSection = (config: AdventConfig, options?: GenerateOptions):
     if(count == 2) star = "";
 
     return `
-      <a href="${options?.basename || ""}/day${key}${options?.pageSuffix || ""}">
+      <a href="./day${key}${options?.pageSuffix || ""}">
         <i class="nes-icon is-small star ${star} hi"></i>
       </a>
 `;
