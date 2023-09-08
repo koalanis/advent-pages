@@ -1,8 +1,12 @@
 # 🎅 advent-pages 🎄
-### an advent-of-code project site generator
-<img width="834" alt="image" src="https://github.com/koalanis/advent-pages/assets/5452212/57f9aa2b-a1e7-417b-a69a-4b070d2742a4">
+### a simple advent-of-code project site generator
+<img width="1435" alt="image" src="https://github.com/koalanis/advent-pages/assets/5452212/f53531db-e31b-481e-95d1-5edbbf3d43c5">
 
+## How it works
+This project builds a node script (dist/index.js) that scans a directory for a `advent.config.json` file and uses metadata in that file to generate a static site to the folder `advent-pages`. 
 
+The metadata provided allows you to specify which code file corresponds to a advent problem and solution and renders it in a standalone page. Configuration uses relative pathing to where the script process is running. 
+<img width="1314" alt="image" src="https://github.com/koalanis/advent-pages/assets/5452212/8d8f082d-8d56-46b0-8b26-87c2aa17ed40">
 
 ## Get started
 ### Installing 
@@ -41,12 +45,14 @@ The other fields in `days[n]`, such as `testDataOne`, `codeOne`, etc, are relati
 
 ### Github workflow
 You can configure this static site generator to work in combination of a github pages. You can add an action to publish the static onto your advent of code github repos. For a template of doing this, take a look at my [starter](https://github.com/koalanis/advent-template).
+
 #### Example
 Python Advent of Code 2015 [link](https://koalanis.github.io/advent-python-2015/)
 
 ## details
 - built using [tsup](https://tsup.egoist.dev/)
 - default styling using [NES.css](https://nostalgic-css.github.io/NES.css/)
+- templating using native ts/js string templating
 
 ## roadmap
 - [x] publish npm package
